@@ -56,7 +56,7 @@ const Contact: React.FC = () => {
             <div className="relative z-10 w-40 h-40 md:w-52 md:h-52 bg-[var(--primary-color-tint-90)] rounded-full flex items-center justify-center ring-8 ring-[var(--white)]/30">
               <div className="w-32 h-32 md:w-44 md:h-44 rounded-full flex items-center justify-center overflow-hidden border-4 border-[var(--primary-black)] bg-[var(--secondary-color-one-70)] relative">
                 <img
-                  src="pictures/contactillustration.png"
+                  src="/pictures/contactillustration.png"
                   alt="Contact Us"
                   className="w-full h-full object-cover opacity-90"
                 />

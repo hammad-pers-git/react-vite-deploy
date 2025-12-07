@@ -31,7 +31,7 @@ const Hero: React.FC = () => {
       subtitleMobile: 'For 18+',
       bg: 'bg-[var(--primary-color-68)]',
       border: 'border-[var(--primary-color)]/20',
-      img: 'pictures/avatar1.svg',
+      img: '/pictures/avatar1.svg',
       imgAlt: 'Individual Therapy',
     },
     {
@@ -41,8 +41,8 @@ const Hero: React.FC = () => {
       subtitleMobile: 'For my partner and I',
       bg: 'bg-[var(--secondary-color-one)]',
       border: 'border-[var(--secondary-color-one-70)]/20',
-      imgWife: 'pictures/avatar2.svg',
-      imgHusband: 'pictures/avatar3.svg',
+      imgWife: '/pictures/avatar2.svg',
+      imgHusband: '/pictures/avatar3.svg',
       imgAlt: 'Couples Therapy',
     },
     {
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
       subtitleMobile: 'For ages 13 - 17',
       bg: 'bg-[var(--secondary-color-two)]',
       border: 'border-[var(--secondary-color-two-40)]/20',
-      img: 'pictures/avatar4.svg',
+      img: '/pictures/avatar4.svg',
       imgAlt: 'Teen Therapy',
     },
   ];
