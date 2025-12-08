@@ -154,9 +154,32 @@ const Contact: React.FC = () => {
             </form>
           </div>
         </div>
+        {/* Traditional Contact Info Grid */}
+        <div className="mt-12 md:mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-[var(--grey-6)] pt-12">
+          {/* Business Hours */}
+          <div className="flex flex-col items-center text-center group cursor-default">
+            <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors">
+              <Clock size={24} /> </div>
+            <h4 className="font-bold text-[var(--primary-black)] mb-1">Business Hours</h4>
+            <p className="text-[var(--grey)] text-sm">Mon - Sat: 11am - 6pm</p> </div>
+          {/* Location */}
+          <a href="https://www.google.com/maps?q=Your+Business+Location" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-center group cursor-pointer" >
+            <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <MapPin size={24} /> </div>
+            <h4 className="font-bold text-[var(--primary-black)] mb-1">Location</h4>
+            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)] underline decoration-dotted">View on Google Maps</p> </a>
+          {/* Call Us */}
+          <a href="tel:+923412120752" className="flex flex-col items-center text-center group cursor-pointer" >
+            <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <Phone size={24} /> </div>
+            <h4 className="font-bold text-[var(--primary-black)] mb-1">Call Us</h4>
+            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">+92 341 2120752</p> </a>
+          {/* Email */}
+          <a href="mailto:contact@manishavarma.com" className="flex flex-col items-center text-center group cursor-pointer" >
+            <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <Mail size={24} /> </div>
+            <h4 className="font-bold text-[var(--primary-black)] mb-1">Email</h4>
+            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">ha9001868@gmail.com</p> </a>
+        </div>
       </div>
-    </section>
-  );
+    </section>);
 };
 
 export default Contact;
