@@ -8,11 +8,11 @@ type NavbarProps = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
-  const [isOpen, setIsOpen] = useState(false);       // Mobile nav
+  const [isOpen, setIsOpen] = useState(false); // Mobile nav
   const [isModalOpen, setIsModalOpen] = useState(false); // Full-page drawer
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [isAnimating, setIsAnimating] = useState(false); // Added for drawer animation
+  const [isAnimating, setIsAnimating] = useState(false); // Drawer animation
 
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -24,6 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
     { name: 'Contact', href: '#contact' },
   ];
 
+  // Handle window resize for mobile nav
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 768) setIsOpen(false);
@@ -35,11 +36,15 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
   // Animate drawer when modal opens
   useEffect(() => {
     if (isModalOpen) {
-      setTimeout(() => setIsAnimating(true), 50); // small delay for transition
-    } else {
-      setIsAnimating(false);
+      setTimeout(() => setIsAnimating(true), 50);
     }
   }, [isModalOpen]);
+
+  // Smooth drawer close with delay
+  const closeDrawer = () => {
+    setIsAnimating(false); // start slide-down animation
+    setTimeout(() => setIsModalOpen(false), 400); // remove from DOM after transition
+  };
 
   const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -50,7 +55,7 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
 
   const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    onHomeClick(); // Notify App to set view 'main'
+    onHomeClick();
   };
 
   const toggleModal = () => {
@@ -141,14 +146,12 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
 
         {/* Mobile Drawer */}
         <div className={`fixed inset-x-0 bottom-0 h-3/4 max-h-[80%] bg-gray-800 text-white shadow-xl transform transition-transform duration-500 z-50 
-  ${isOpen ? 'translate-y-0' : 'translate-y-full'} rounded-t-2xl`}>
+          ${isOpen ? 'translate-y-0' : 'translate-y-full'} rounded-t-2xl`}>
           <div className="flex flex-col h-full px-6 py-8 relative">
-            {/* Close Button */}
             <button onClick={() => setIsOpen(false)} className="absolute top-4 right-4 text-gray-400 hover:text-white">
               <X size={24} />
             </button>
 
-            {/* Logo inside Drawer */}
             <div className="flex items-center justify-center mb-6 mt-2">
               <div className="w-20 h-20 bg-[#F9F7F2] rounded-full border border-[#1E4620] flex flex-col items-center justify-center relative">
                 <div className="absolute inset-1 rounded-full border border-[#1E4620] opacity-20"></div>
@@ -162,7 +165,6 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
 
             <div className="border-t border-gray-600 mb-6"></div>
 
-            {/* Nav Links */}
             <div className="flex flex-col space-y-4 mb-6">
               {navLinks.map((link) => (
                 <a key={link.name} href={link.href} onClick={(e) => handleScroll(e, link.href)} className="hover:text-yellow-400 text-lg font-normal transition-colors">
@@ -171,12 +173,10 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
               ))}
             </div>
 
-            {/* Get Started Button */}
             <button onClick={toggleModal} className="bg-yellow-400 text-black px-4 py-2 rounded-lg hover:bg-yellow-300 transition-colors font-normal mb-6">
               Get Started
             </button>
 
-            {/* Contact Info at Bottom */}
             <div className="mt-auto border-t border-gray-600 pt-4 mb-20">
               <h4 className="text-white text-lg mb-2 font-bold">Contact</h4>
               <p className="text-white text-sm mb-1">Email: contact@ayeshaakmal.com</p>
@@ -185,27 +185,27 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
           </div>
         </div>
 
-        {/* Overlay for Mobile Drawer */}
         {isOpen && <div className="fixed inset-0 bg-black/50 z-40" onClick={() => setIsOpen(false)} />}
       </nav>
 
-      {/* FULL PAGE DRAWER FROM NAVBAR GET STARTED */}
+      {/* FULL PAGE DRAWER */}
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-end">
           <div
             className={`absolute inset-0 bg-slate-900/40 backdrop-blur-md transition-opacity duration-500 ease-in-out ${isAnimating ? 'opacity-100' : 'opacity-0'}`}
-            onClick={() => setIsModalOpen(false)}
+            onClick={closeDrawer}
           />
 
           <div
-            className={`relative w-full h-[95vh] bg-white rounded-t-[2.5rem] shadow-2xl overflow-hidden flex flex-col transform transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1) ${isAnimating ? 'translate-y-0' : 'translate-y-full'}`}
+            className={`relative w-full h-[95vh] bg-white rounded-t-[2.5rem] shadow-2xl overflow-hidden flex flex-col transform transition-transform duration-500 cubic-bezier(0.32, 0.72, 0, 1)
+              ${isAnimating ? 'translate-y-0' : 'translate-y-full'}`}
           >
             <div className="w-full flex justify-center pt-4 pb-2">
-              <div className="w-12 h-1.5 bg-slate-200 rounded-full cursor-pointer" onClick={() => setIsModalOpen(false)} />
+              <div className="w-12 h-1.5 bg-slate-200 rounded-full cursor-pointer" onClick={closeDrawer} />
             </div>
 
             <button
-              onClick={() => setIsModalOpen(false)}
+              onClick={closeDrawer}
               className="absolute top-6 right-6 z-50 p-3 bg-slate-50 hover:bg-slate-100 rounded-full text-slate-400 hover:text-slate-900 transition-colors"
             >
               <X size={24} />
@@ -237,7 +237,7 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
                     </div>
                     <h2 className="text-4xl font-serif font-bold text-slate-900">Application Sent!</h2>
                     <p className="text-slate-600 text-lg">You'll receive a WhatsApp message within 24 hours to schedule your session.</p>
-                    <button onClick={() => setIsModalOpen(false)} className="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl">Return to Home</button>
+                    <button onClick={closeDrawer} className="px-10 py-4 bg-slate-900 text-white font-bold rounded-2xl">Return to Home</button>
                   </div>
                 )}
               </div>
