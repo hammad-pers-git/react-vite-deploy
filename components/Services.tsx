@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { ClipboardList, Users, Calendar, Heart, X, ArrowRight, Loader2, CheckCircle2 } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
 
 interface Step {
   id: number;
@@ -14,9 +15,44 @@ const GetStarted: React.FC = () => {
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [activeStep, setActiveStep] = useState(1);
-  const [visibleSteps, setVisibleSteps] = useState<number[]>([]); // For scroll animation
   const formRef = useRef<HTMLFormElement>(null);
   const sectionRef = useRef<HTMLDivElement>(null);
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const headerVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const stepVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
 
   const openDrawer = () => {
     setIsDrawerOpen(true);
@@ -47,30 +83,6 @@ const GetStarted: React.FC = () => {
     { id: 4, title: "Begin therapy and feel better", icon: <Heart strokeWidth={1.5} /> },
   ];
 
-  // Scroll animation for steps
-  useEffect(() => {
-    const stepsElems = document.querySelectorAll('.step-item');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const stepId = Number(entry.target.getAttribute('data-step'));
-            if (!visibleSteps.includes(stepId)) {
-              setTimeout(() => {
-                setVisibleSteps(prev => [...prev, stepId]);
-              }, stepId * 200); // staggered delay
-            }
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    stepsElems.forEach(el => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, [visibleSteps]);
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formRef.current) return;
@@ -96,26 +108,46 @@ const GetStarted: React.FC = () => {
   };
 
   return (
-    <section ref={sectionRef} className="py-8 md:py-12 bg-white overflow-hidden relative">
+    <motion.section
+      ref={sectionRef}
+      className="py-8 md:py-12 bg-white overflow-hidden relative"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      variants={containerVariants}
+    >
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
         {/* Header */}
-        <div className="mb-6 md:mb-10 text-center">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-900 mb-2">
+        <motion.div
+          className="mb-6 md:mb-10 text-center"
+          variants={headerVariants}
+        >
+          <motion.h2
+            className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-900 mb-2"
+            variants={headerVariants}
+          >
             It’s easy to get started
-          </h2>
-          <p className="hidden md:block text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+          </motion.h2>
+          <motion.p
+            className="hidden md:block text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
+            variants={headerVariants}
+          >
             Start your wellness journey in 4 simple steps.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Desktop Steps */}
-        <div className="hidden lg:grid grid-cols-4 gap-6 mb-6 relative z-10">
+        <motion.div
+          className="hidden lg:grid grid-cols-4 gap-6 mb-6 relative z-10"
+          variants={containerVariants}
+        >
           {steps.map(step => (
-            <div
+            <motion.div
               key={step.id}
               data-step={step.id}
-              className={`step-item flex flex-col h-full transition-all duration-700 ease-out ${visibleSteps.includes(step.id) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                }`}
+              className="step-item flex flex-col h-full"
+              variants={stepVariants}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
             >
               <div className="bg-[#FFFBF2] rounded-xl p-4 h-[140px] flex flex-col items-center justify-center text-center border border-transparent hover:border-yellow-100 group">
                 <div className="flex flex-col items-center gap-1 mb-1">
@@ -126,9 +158,9 @@ const GetStarted: React.FC = () => {
                 </div>
                 <p className="text-sm md:text-base text-gray-900 font-medium leading-snug">{step.title}</p>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="hidden lg:grid grid-cols-4 gap-6 relative mt-0 mb-6">
@@ -143,15 +175,19 @@ const GetStarted: React.FC = () => {
         </div>
 
         {/* Mobile Steps */}
-        <div className="lg:hidden max-w-md mx-auto relative pl-2">
+        <motion.div
+          className="lg:hidden max-w-md mx-auto relative pl-2"
+          variants={containerVariants}
+        >
           <div className="absolute left-[26px] top-6 bottom-6 w-px border-l-2 border-dashed border-gray-300/70 -z-0" />
           <div className="flex flex-col gap-5">
             {steps.map(step => (
-              <div
+              <motion.div
                 key={step.id}
                 data-step={step.id}
-                className={`step-item relative flex items-center gap-4 z-10 transition-all duration-700 ease-out ${visibleSteps.includes(step.id) ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                  }`}
+                className="step-item relative flex items-center gap-4 z-10"
+                variants={stepVariants}
+                whileHover={{ x: 5, transition: { duration: 0.2 } }}
               >
                 <div className={`shrink-0 w-10 h-10 rounded-lg flex items-center justify-center border shadow-sm
                     ${step.id === 1 ? 'bg-[#FDE68A] border-[#FDE68A]' : 'bg-white border-gray-100'}`}>
@@ -160,10 +196,10 @@ const GetStarted: React.FC = () => {
                   })}
                 </div>
                 <p className="text-base text-gray-900 font-normal">{step.title}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Action Buttons */}
         <div className="flex flex-col gap-3 mt-6 justify-center max-w-md mx-auto lg:max-w-none lg:flex-row">
@@ -319,7 +355,7 @@ const GetStarted: React.FC = () => {
           </div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

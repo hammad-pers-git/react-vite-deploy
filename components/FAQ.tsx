@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Plus } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,7 +14,14 @@ const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, ans
   }, [isOpen]);
 
   return (
-    <div className="bg-white rounded-lg mb-4 overflow-hidden shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-md">
+    <motion.div
+      className="bg-white rounded-lg mb-4 overflow-hidden shadow-sm border border-gray-200 transition-all duration-300 hover:shadow-md"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false, amount: 0.3 }}
+      transition={{ duration: 0.5 }}
+      whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
+    >
       <button
         className="w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none bg-white group"
         onClick={() => setIsOpen(!isOpen)}
@@ -36,7 +44,7 @@ const FAQItem: React.FC<{ question: string; answer: string }> = ({ question, ans
           {answer}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
@@ -77,51 +85,81 @@ const FAQ: React.FC = () => {
   const visibleQuestions = showAll ? questions : questions.slice(0, 5);
 
   return (
-    <section id="faq" className="relative py-24 bg-white overflow-hidden">
-      
+    <motion.section
+      id="faq"
+      className="relative py-24 bg-white overflow-hidden"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+    >
+
       {/* Background Decorative Line (Top Separator) */}
       <div className="absolute top-0 left-0 w-full pointer-events-none z-0">
-        <svg 
-          viewBox="0 0 1440 320" 
-          fill="none" 
+        <svg
+          viewBox="0 0 1440 320"
+          fill="none"
           xmlns="http://www.w3.org/2000/svg"
           className="w-full h-auto min-h-[300px] object-cover -translate-y-[40%]"
           preserveAspectRatio="none"
         >
-          <path 
-            d="M-46 168.5C305 60.5 596 295.5 941 247.5C1286 199.5 1493 84.5 1583 60.5" 
-            stroke="#FCD34D" 
-            strokeWidth="2" 
+          <path
+            d="M-46 168.5C305 60.5 596 295.5 941 247.5C1286 199.5 1493 84.5 1583 60.5"
+            stroke="#FCD34D"
+            strokeWidth="2"
             strokeLinecap="round"
           />
         </svg>
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif font-bold text-[var(--primary-black)]">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6 }}
+        >
+          <motion.h2
+            className="text-4xl md:text-5xl font-serif font-bold text-[var(--primary-black)]"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             Have a question?
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
-        <div className="space-y-2">
+        <motion.div
+          className="space-y-2"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: false, amount: 0.3 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
           {visibleQuestions.map((q, index) => (
             <FAQItem key={index} {...q} />
           ))}
-        </div>
+        </motion.div>
 
         {!showAll && questions.length > 5 && (
-           <div className="text-center mt-8">
-             <button 
+           <motion.div
+             className="text-center mt-8"
+             initial={{ opacity: 0, y: 20 }}
+             whileInView={{ opacity: 1, y: 0 }}
+             viewport={{ once: false, amount: 0.3 }}
+             transition={{ duration: 0.6, delay: 0.6 }}
+           >
+             <button
                onClick={() => setShowAll(true)}
                className="text-gray-500 hover:text-gray-800 font-medium text-sm transition-colors"
              >
                View all questions
              </button>
-           </div>
+           </motion.div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

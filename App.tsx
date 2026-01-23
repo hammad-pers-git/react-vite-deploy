@@ -6,7 +6,6 @@ import GetStarted from './components/Services';
 import SpecializedAreas from './components/SpecializedAreas';
 import Fees from './components/Fees';
 import FAQ from './components/FAQ';
-
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';

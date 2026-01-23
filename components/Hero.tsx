@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
 
 type CardType = 'individual' | 'couple' | 'teen';
 
@@ -7,7 +8,43 @@ const Hero: React.FC = () => {
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact');
     if (contactSection) {
-      contactSection.scrollIntoView(); 
+      contactSection.scrollIntoView();
+    }
+  };
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
     }
   };
 
@@ -58,29 +95,54 @@ const Hero: React.FC = () => {
   ];
 
   return (
-    <section id="home" className="relative overflow-hidden bg-[var(--white)] pt-12 pb-16 md:pt-16 md:pb-24">
+    <motion.section
+      id="home"
+      className="relative overflow-hidden bg-[var(--white)] pt-12 pb-16 md:pt-16 md:pb-24"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      variants={containerVariants}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Header Content */}
-        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-16">
-          <h1 className="text-[var(--primary-black)] font-bold text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6 font-serif tracking-tight leading-tight">
+        <motion.div
+          className="text-center max-w-3xl mx-auto mb-10 md:mb-16"
+          variants={itemVariants}
+        >
+          <motion.h1
+            className="text-[var(--primary-black)] font-bold text-4xl md:text-5xl lg:text-6xl mb-4 md:mb-6 font-serif tracking-tight leading-tight"
+            variants={itemVariants}
+          >
             Online therapy <br className="md:hidden" /> that works.
-          </h1>
-          <h2 className="text-[var(--primary-black)] text-lg md:text-2xl font-medium mb-8 md:mb-12 max-w-xl mx-auto leading-normal font-serif">
+          </motion.h1>
+          <motion.h2
+            className="text-[var(--primary-black)] text-lg md:text-2xl font-medium mb-8 md:mb-12 max-w-xl mx-auto leading-normal font-serif"
+            variants={itemVariants}
+          >
             The best psychologists in Dubai <br className="hidden md:block" /> are here for you.
-          </h2>
-          <p className="text-[var(--primary-black)] text-base md:text-lg opacity-80 font-sans">
+          </motion.h2>
+          <motion.p
+            className="text-[var(--primary-black)] text-base md:text-lg opacity-80 font-sans"
+            variants={itemVariants}
+          >
             What kind of online therapy <br className="md:hidden" /> are you looking for?
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto">
-          {cards.map((card) => (
-            <div
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto"
+          variants={containerVariants}
+        >
+          {cards.map((card, index) => (
+            <motion.div
               key={card.id}
-              onClick={scrollToContact} 
+              onClick={scrollToContact}
               className={`${card.bg} rounded-xl p-3 md:p-5 flex flex-row md:flex-col items-center ${card.border} shadow-sm h-20 md:h-[280px] group cursor-pointer`}
+              variants={cardVariants}
+              whileHover={{ scale: 1.05, transition: { duration: 0.2 } }}
+              whileTap={{ scale: 0.95 }}
             >
               <div className="bg-[var(--white)] rounded-lg shrink-0 w-20 h-100 md:w-full md:h-[150px] flex items-center justify-center overflow-hidden relative mr-4 md:mr-0 md:mb-6 px-4">
                 {card.id === 'couple' ? (
@@ -105,19 +167,22 @@ const Hero: React.FC = () => {
                   <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Bottom Link */}
-        <div className="text-center mt-10 md:mt-16">
+        <motion.div
+          className="text-center mt-10 md:mt-16"
+          variants={itemVariants}
+        >
           <p className="text-[var(--primary-black)] text-base md:text-lg">
             Not sure? <a href="#contact" className="underline font-medium hover:text-[var(--primary-color-80)]">Talk to a specialist.</a>
           </p>
-        </div>
+        </motion.div>
 
       </div>
-    </section>
+    </motion.section>
   );
 };
 

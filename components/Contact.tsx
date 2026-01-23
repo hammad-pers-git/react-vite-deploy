@@ -1,11 +1,36 @@
 import React, { useRef, useState } from 'react';
 import { MapPin, Phone, Mail, Clock, User, PhoneCall } from 'lucide-react';
 import emailjs from '@emailjs/browser';
+import { motion } from 'framer-motion';
 
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -35,17 +60,33 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-12 md:py-16 bg-[var(--white)]">
+    <motion.section
+      id="contact"
+      className="py-12 md:py-16 bg-[var(--white)]"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: false, amount: 0.3 }}
+      variants={containerVariants}
+    >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center mb-12">
-          <span className="text-[var(--primary-black)] font-bold text-sm tracking-widest uppercase mb-2 block opacity-70">
+        <motion.div
+          className="text-center mb-12"
+          variants={itemVariants}
+        >
+          <motion.span
+            className="text-[var(--primary-black)] font-bold text-sm tracking-widest uppercase mb-2 block opacity-70"
+            variants={itemVariants}
+          >
             Get in Touch
-          </span>
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--primary-black)]">
+          </motion.span>
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold text-[var(--primary-black)]"
+            variants={itemVariants}
+          >
             Contact Us
-          </h2>
-        </div>
+          </motion.h2>
+        </motion.div>
 
         {/* Main Contact Card */}
         <div className="bg-[var(--primary-color-tint-99)] rounded-2xl flex flex-col md:flex-row border border-[var(--primary-color-tint-90)]">
@@ -179,7 +220,7 @@ const Contact: React.FC = () => {
             <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">ha9001868@gmail.com</p> </a>
         </div>
       </div>
-    </section>);
+    </motion.section>);
 };
 
 export default Contact;
