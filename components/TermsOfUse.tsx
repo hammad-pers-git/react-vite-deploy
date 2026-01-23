@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface TermsOfUseProps {
   onBack: () => void;
@@ -11,11 +12,41 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ onBack }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
       {/* Header Section */}
-      <header className="bg-[#FFF0CC] py-10 md:py-17 text-center border-b border-stone-100">
-        <div className="max-w-4xl mx-auto px-4">
+      <motion.header 
+        className="bg-[#FFF0CC] py-10 md:py-17 text-center border-b border-stone-100"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        <motion.div className="max-w-4xl mx-auto px-4" variants={itemVariants}>
           <button 
             onClick={onBack}
             className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 font-bold text-xs uppercase tracking-widest mb-12 transition-all group"
@@ -24,22 +55,28 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ onBack }) => {
             Back to Home
           </button>
           <h1 className="text-5xl md:text-5xl font-serif font-bold text-gray-900 mb-4">Terms of Use</h1>
-        </div>
-      </header>
+        </motion.div>
+      </motion.header>
 
       {/* Content Section */}
-      <main className="max-w-4xl mx-auto px-6 py-20 space-y-16">
+      <motion.main 
+        className="max-w-4xl mx-auto px-6 py-20 space-y-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+      >
         
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Introduction</h2>
           <div className="space-y-4 text-stone-600 leading-relaxed text-base md:text-lg">
             <p>
               Welcome to Ayesha Akmal Counseling! These Terms of Use ("Terms") govern your access to and use of our website, mobile applications, and all related services (collectively, the "Platform"). By accessing or using the Platform, you agree to be bound by these Terms. If you disagree with any part of these Terms, you may not access or use the Platform.
             </p>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Our services</h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
             <p>
@@ -51,25 +88,25 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ onBack }) => {
               <li>Workshops: Group sessions focused on specific mental wellness topics.</li>
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">User account</h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
             <p>
               <span className="font-bold text-gray-900">Account creation:</span> To access certain features of the Platform, you may be required to create a user account. You are responsible for maintaining the confidentiality of your account information and for all activities that occur under your account.
             </p>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Therapist qualifications</h2>
           <p className="text-stone-600 leading-relaxed">
             In order to provide the highest quality of services, Ayesha Akmal Counseling ensures that all our therapists are certified mental health professionals with relevant experience and licensure in their respective jurisdictions.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Therapy Session scheduling and cancellation</h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
             <ul className="list-disc pl-6 space-y-4">
@@ -92,16 +129,16 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ onBack }) => {
               </li>
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Fees and payments</h2>
           <p className="text-stone-600 leading-relaxed">
             Fees for therapy sessions are outlined on the Platform. Payment is required in advance and can be made through the designated payment methods provided during the booking process.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Confidentiality and Privacy</h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
             <ul className="list-disc pl-6 space-y-4">
@@ -113,15 +150,15 @@ const TermsOfUse: React.FC<TermsOfUseProps> = ({ onBack }) => {
               </li>
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        <section className="pt-10 border-t border-stone-100">
+        <motion.section className="pt-10 border-t border-stone-100" variants={itemVariants}>
            <p className="text-stone-400 text-sm italic">
              For any further clarification on our Terms of Use, please reach out to us at 
              <a href="mailto:legal@ayeshaakmal.com" className="underline ml-1">legal@ayeshaakmal.com</a>.
            </p>
-        </section>
-      </main>
+        </motion.section>
+      </motion.main>
     </div>
   );
 };

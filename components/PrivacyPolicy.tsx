@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
+import { motion, useInView } from 'framer-motion';
 
 interface PrivacyPolicyProps {
   onBack: () => void;
@@ -11,11 +12,41 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white font-sans text-gray-800">
       {/* Header Section */}
-      <header className="bg-[#FFF0CC] py-10 md:py-17 text-center border-b border-stone-100">
-        <div className="max-w-4xl mx-auto px-4">
+      <motion.header 
+        className="bg-[#FFF0CC] py-10 md:py-17 text-center border-b border-stone-100"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        <motion.div className="max-w-4xl mx-auto px-4" variants={itemVariants}>
           <button 
             onClick={onBack}
             className="inline-flex items-center gap-2 text-stone-500 hover:text-stone-900 font-bold text-xs uppercase tracking-widest mb-12 transition-all group"
@@ -27,16 +58,25 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
           <p className="text-stone-500 text-sm md:text-base font-medium">
             Updated and effective as of September 26, 2024
           </p>
-        </div>
-      </header>
+        </motion.div>
+      </motion.header>
 
       {/* Content Section */}
-      <main className="max-w-4xl mx-auto px-6 py-20 space-y-16">
-        <p className="text-lg leading-relaxed text-stone-600">
+      <motion.main 
+        className="max-w-4xl mx-auto px-6 py-20 space-y-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        variants={containerVariants}
+      >
+        <motion.p 
+          className="text-lg leading-relaxed text-stone-600"
+          variants={itemVariants}
+        >
           This privacy policy outlines how we collect, use, share, and protect your personal information when you engage with our services.
-        </p>
+        </motion.p>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Overview</h2>
           <div className="space-y-4 text-stone-600 leading-relaxed">
             <p>Ayesha Akmal Counseling ('we', 'us', 'our') is committed to ensuring your privacy. This policy applies to:</p>
@@ -46,9 +86,9 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
             </ul>
             <p>If you have any questions about this policy, please contact us at <a href="mailto:privacy@ayeshaakmal.com" className="underline hover:text-[var(--primary-color)] transition-colors">privacy@ayeshaakmal.com</a>.</p>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Key terms</h2>
           <ul className="space-y-4 text-stone-600">
             <li><span className="font-bold text-gray-900">Cookies:</span> Small data files stored on your device to enhance your experience on our website.</li>
@@ -56,9 +96,9 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
             <li><span className="font-bold text-gray-900">Services:</span> The online therapy and counseling services offered by Ayesha Akmal Counseling.</li>
             <li><span className="font-bold text-gray-900">Third Parties:</span> External entities, including advertisers and service providers, that may have access to your information.</li>
           </ul>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Information we collect</h2>
           <div className="space-y-4 text-stone-600">
             <p>We may collect the following types of information when you interact with our Services:</p>
@@ -76,16 +116,16 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
               <li><span className="font-bold text-gray-900">Usage data:</span> Information about how you use our website and services.</li>
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Sources of information</h2>
           <p className="text-stone-600 leading-relaxed">
             We may obtain information directly from you or through third-party sources, such as marketing partners and fraud detection services.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Sharing your information</h2>
           <div className="space-y-4 text-stone-600">
             <p>Your information may be used for:</p>
@@ -96,23 +136,23 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
               <li>Analyzing usage trends to enhance user experience.</li>
             </ul>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Email communication</h2>
           <p className="text-stone-600 leading-relaxed">
             By providing your email address, you agree to receive communications from us. You can opt-out at any time by following the unsubscribe instructions in our emails.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Data security</h2>
           <p className="text-stone-600 leading-relaxed">
             We employ various security measures to protect your information, but no method of transmission over the internet or method of electronic storage is 100% secure. While we strive to protect your personal information, we cannot guarantee its absolute security.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Access and control of your information</h2>
           <div className="space-y-4 text-stone-600">
             <p>You have the right to request:</p>
@@ -123,43 +163,43 @@ const PrivacyPolicy: React.FC<PrivacyPolicyProps> = ({ onBack }) => {
             </ul>
             <p>To make such requests, please contact us at <a href="mailto:privacy@ayeshaakmal.com" className="underline hover:text-[var(--primary-color)] transition-colors">privacy@ayeshaakmal.com</a>.</p>
           </div>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Retention of your information</h2>
           <p className="text-stone-600 leading-relaxed">
             We retain your information only as long as necessary to fulfill the purposes outlined in this policy, or as required by law. Once it is no longer needed, we will securely delete or anonymize it.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Children's privacy</h2>
           <p className="text-stone-600 leading-relaxed">
             Our Services are not intended for individuals under the age of 13. We do not knowingly collect personal data from children. If you believe we have collected information from a child, please contact us.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Changes to this privacy policy</h2>
           <p className="text-stone-600 leading-relaxed">
             We may update this policy periodically. Any changes will be posted on our website with an updated effective date. We encourage you to review this policy regularly.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Governing law</h2>
           <p className="text-stone-600 leading-relaxed">
             Our website may contain links to other websites not operated by us. We are not responsible for the content or practices of those sites. Please review their privacy policies before providing any personal information.
           </p>
-        </section>
+        </motion.section>
 
-        <section>
+        <motion.section variants={itemVariants}>
           <h2 className="text-3xl font-serif font-bold text-gray-900 mb-6">Contact us</h2>
           <p className="text-stone-600 leading-relaxed">
             If you have any questions or concerns about this Privacy Policy, please reach out to us at <a href="mailto:privacy@ayeshaakmal.com" className="underline hover:text-[var(--primary-color)] transition-colors">privacy@ayeshaakmal.com</a>.
           </p>
-        </section>
-      </main>
+        </motion.section>
+      </motion.main>
     </div>
   );
 };
