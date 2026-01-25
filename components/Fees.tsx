@@ -116,7 +116,7 @@ const Fees = () => {
               ],
             }, {
               title: "Teen Support",
-              price: "10,000",
+              price: "3,000",
               duration: "50 mins",
               icon: <Brain size={26} />,
               features: [
