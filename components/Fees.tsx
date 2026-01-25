@@ -93,7 +93,7 @@ const Fees = () => {
           >
             {[{
               title: "Individual Therapy",
-              price: "12,000",
+              price: "3,000",
               duration: "50 mins",
               icon: <User size={26} />,
               features: [
@@ -105,7 +105,7 @@ const Fees = () => {
             }, {
               isPopular: true,
               title: "Couples Session",
-              price: "15,000",
+              price: "3,500",
               duration: "75 mins",
               icon: <Users size={26} />,
               features: [

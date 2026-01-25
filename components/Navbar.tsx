@@ -112,8 +112,8 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
                 <div className="w-20 h-20 md:w-24 md:h-24 bg-[#F9F7F2] rounded-full border border-[#1E4620] flex flex-col items-center justify-center relative shadow-sm group-hover:shadow-md transition-all duration-300">
                   <div className="absolute inset-1 rounded-full border border-[#1E4620] opacity-20"></div>
                   <div className="flex flex-col items-center text-[#1E4620] leading-none z-10 pt-1">
-                    <span className="font-serif text-[15px] md:text-[17px] tracking-tight">Ayesha</span>
-                    <span className="font-serif text-[15px] md:text-[17px] -mt-0.5 tracking-tight">Akmal</span>
+                    <span className="font-serif text-[15px] md:text-[17px] tracking-tight">Ferasat</span>
+                    <span className="font-serif text-[15px] md:text-[17px] -mt-0.5 tracking-tight">Ayesha</span>
                     <span className="text-[6px] md:text-[7px] uppercase tracking-[0.15em] mt-1 font-sans opacity-90">Counseling</span>
                     <Sprout size={12} className="mt-0.5 text-[#1E4620]" strokeWidth={2} />
                   </div>
@@ -121,7 +121,7 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
               </a>
               <a href="#home" onClick={handleLogoClick} className="hidden md:flex items-center group text-left">
                 <span className="text-[#1E4620] font-serif font-bold text-xl tracking-wide group-hover:opacity-80 transition-opacity">
-                  Ayeshaakmalcounseling
+                  FerasatAyeshacounseling
                 </span>
               </a>
             </div>
@@ -156,8 +156,8 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
               <div className="w-20 h-20 bg-[#F9F7F2] rounded-full border border-[#1E4620] flex flex-col items-center justify-center relative">
                 <div className="absolute inset-1 rounded-full border border-[#1E4620] opacity-20"></div>
                 <div className="flex flex-col items-center text-[#1E4620] leading-none z-10 pt-1">
-                  <span className="font-serif text-[15px] tracking-tight">Ayesha</span>
-                  <span className="font-serif text-[15px] -mt-0.5 tracking-tight">Akmal</span>
+                  <span className="font-serif text-[15px] tracking-tight">Ferasat</span>
+                  <span className="font-serif text-[15px] -mt-0.5 tracking-tight">Ayesha </span>
                   <span className="text-[6px] uppercase tracking-[0.15em] mt-1 font-sans opacity-90">Counseling</span>
                 </div>
               </div>
@@ -179,8 +179,8 @@ const Navbar: React.FC<NavbarProps> = ({ onHomeClick }) => {
 
             <div className="mt-auto border-t border-gray-600 pt-4 mb-20">
               <h4 className="text-white text-lg mb-2 font-bold">Contact</h4>
-              <p className="text-white text-sm mb-1">Email: contact@ayeshaakmal.com</p>
-              <p className="text-white text-sm">Phone: +92 341 2120752</p>
+              <p className="text-white text-sm mb-1">Email: ferasat.ayesha77@gmail.com</p>
+              <p className="text-white text-sm">Phone: +92 317 5632023</p>
             </div>
           </div>
         </div>

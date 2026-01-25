@@ -14,15 +14,11 @@ const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onTermsClick }) => {
 
         {/* Company Info */}
         <div className="flex flex-col space-y-3">
-          <h5 className="text-white font-serif font-bold text-lg uppercase tracking-wide">Ayesha Akmal</h5>
-          <div className="flex items-center gap-3 mt-2">
-            <Mail size={16} className="text-stone-500" />
-            <span className="text-gray-300">contact@ayeshaakmal.com</span>
-          </div>
-          <div className="flex items-center gap-3">
-            <Phone size={16} className="text-stone-500" />
-            <span className="text-gray-300">+92 341 2120752</span>
-          </div>
+          <h5 className="text-white font-serif font-bold text-lg uppercase tracking-wide">Ferasat Ayesha</h5>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            I am Ferasat Ayesha, a qualified Psychologist with over 5 years of experience providing psychological support to adults, couples, and teenagers. I hold an MS in Clinical Psychology along with a PMDCP Diploma, and I work with individuals facing emotional, behavioral, and relationship-related challenges.
+          </p>
+          
         </div>
 
         {/* Quick Links */}
@@ -65,8 +61,17 @@ const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onTermsClick }) => {
           <div className="flex gap-4 mt-1">
             <a href="#" className="text-gray-400 hover:text-blue-500 transition-colors"><Facebook size={20} /></a>
             <a href="#" className="text-gray-400 hover:text-blue-400 transition-colors"><Twitter size={20} /></a>
-            <a href="#" className="text-gray-400 hover:text-pink-500 transition-colors"><Instagram size={20} /></a>
+            <a href="https://www.instagram.com/ferasatayesha_mughal?igsh=MXN1NXRrNHd2bmt5YQ==" className="text-gray-400 hover:text-pink-500 transition-colors" target="_blank"><Instagram size={20} /></a>
             <a href="#" className="text-gray-400 hover:text-blue-700 transition-colors"><Linkedin size={20} /></a>
+          </div>
+          <br /><br />
+          <div className="flex items-center gap-3 mt-2">
+            <Mail size={16} className="text-stone-500" />
+            <span className="text-gray-300">ferasat.ayesha77@gmail.com</span>
+          </div>
+          <div className="flex items-center gap-3">
+            <Phone size={16} className="text-stone-500" />
+            <span className="text-gray-300">+92 317 5632023</span>
           </div>
         </div>
 

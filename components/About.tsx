@@ -62,16 +62,16 @@ const About: React.FC<AboutProps> = ({ onOpenAbout }) => {
             whileHover={{ scale: 1.02, transition: { duration: 0.3 } }}
           >
             <div className="rounded-[40px] overflow-hidden shadow-2xl h-[500px] w-full transition-transform duration-300 group-hover:scale-[1.02]">
-               <img
-                 src="https://picsum.photos/600/800?grayscale&random=5"
-                 alt="Manisha Varma"
-                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-               />
-               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
-                  <span className="bg-white/90 text-[var(--primary-black)] px-6 py-3 rounded-full font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
-                    Read Full Bio
-                  </span>
-               </div>
+              <img
+                src="https://picsum.photos/600/800?grayscale&random=5"
+                alt="Manisha Varma"
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 flex items-center justify-center">
+                <span className="bg-white/90 text-[var(--primary-black)] px-6 py-3 rounded-full font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                  Read Full Bio
+                </span>
+              </div>
             </div>
 
             {/* Experience Badge */}
@@ -79,12 +79,12 @@ const About: React.FC<AboutProps> = ({ onOpenAbout }) => {
               className="absolute -bottom-6 right-8 bg-[var(--white)] px-6 py-4 rounded-xl shadow-xl flex flex-col items-center justify-center border border-[var(--grey-6)] pointer-events-none"
               variants={itemVariants}
             >
-               <div className="flex gap-1 mb-1">
-                 {[1, 2, 3, 4, 5].map((s) => (
-                   <Star key={s} size={16} fill="var(--primary-color)" stroke="var(--primary-color)" />
-                 ))}
-               </div>
-               <span className="text-[var(--primary-black)] font-bold text-sm">20+ Years Experience</span>
+              <div className="flex gap-1 mb-1">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star key={s} size={16} fill="var(--primary-color)" stroke="var(--primary-color)" />
+                ))}
+              </div>
+              <span className="text-[var(--primary-black)] font-bold text-sm">5+ Years Experience</span>
             </motion.div>
           </motion.div>
 
@@ -106,14 +106,13 @@ const About: React.FC<AboutProps> = ({ onOpenAbout }) => {
               className="text-[var(--grey)] mb-6 leading-relaxed"
               variants={itemVariants}
             >
-              Hi there! I am Mrs. Manisha Varma, a Senior Counselling Psychologist with over 20 years of experience in facilitating mental wellness and personal growth. My journey has been dedicated to understanding the intricacies of the human mind and helping individuals navigate life's challenges with grace.
+              I am Ferasat Ayesha, a qualified Psychologist with over 5 years of experience providing psychological support to adults, couples, and teenagers. I hold an MS in Clinical Psychology along with a PMDCP Diploma, and I work with individuals facing emotional, behavioral, and relationship-related challenges.
             </motion.p>
             <motion.p
               className="text-[var(--grey)] mb-8 leading-relaxed"
               variants={itemVariants}
             >
-              My vision is to facilitate individuals' inner growth through skill-building, self-awareness, and therapeutic interventions. I believe that every person possesses the strength to overcome hurdles, and my role is to provide the tools and support needed to unlock that potential. Whether through one-on-one sessions or group workshops, I strive to create a safe, non-judgmental space for transformation.
-            </motion.p>
+              My areas of expertise include mood disorders, depression, anxiety, stress management, and relationship conflicts. I follow a structured, empathetic, and client-centered approach, helping individuals develop healthier coping strategies and gain emotional clarity.            </motion.p>
 
             <motion.div
               className="flex flex-wrap gap-3 mb-8"
@@ -127,13 +126,13 @@ const About: React.FC<AboutProps> = ({ onOpenAbout }) => {
             </motion.div>
 
             <motion.button
-                onClick={onOpenAbout}
-                className="text-[var(--primary-black)] font-bold text-sm border-b-2 border-[var(--primary-color)] pb-1 hover:text-[var(--primary-color-80)] transition-colors flex items-center gap-1 group"
-                variants={itemVariants}
-                whileHover={{ x: 5, transition: { duration: 0.2 } }}
+              onClick={onOpenAbout}
+              className="text-[var(--primary-black)] font-bold text-sm border-b-2 border-[var(--primary-color)] pb-1 hover:text-[var(--primary-color-80)] transition-colors flex items-center gap-1 group"
+              variants={itemVariants}
+              whileHover={{ x: 5, transition: { duration: 0.2 } }}
             >
-                READ MORE ABOUT ME
-                <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
+              READ MORE ABOUT ME
+              <ChevronRight size={16} className="transition-transform group-hover:translate-x-1" />
             </motion.button>
           </motion.div>
 

@@ -52,8 +52,8 @@ const Hero: React.FC = () => {
   const cards: { 
     id: CardType; 
     title: string; 
-    subtitleDesktop: string; 
-    subtitleMobile: string; 
+    // subtitleDesktop: string; 
+    // subtitleMobile: string; 
     bg: string; 
     border: string; 
     img?: string; 
@@ -64,8 +64,8 @@ const Hero: React.FC = () => {
     {
       id: 'individual',
       title: 'For Individuals',
-      subtitleDesktop: 'For 18+',
-      subtitleMobile: 'For 18+',
+      // subtitleDesktop: 'For 18+',
+      // subtitleMobile: 'For 18+',
       bg: 'bg-[var(--primary-color-68)]',
       border: 'border-[var(--primary-color)]/20',
       img: '/pictures/avatar1.svg',
@@ -74,8 +74,8 @@ const Hero: React.FC = () => {
     {
       id: 'couple',
       title: 'For Couples',
-      subtitleDesktop: 'Partner & I',
-      subtitleMobile: 'For my partner and I',
+      // subtitleDesktop: 'Partner & I',
+      // subtitleMobile: 'For my partner and I',
       bg: 'bg-[var(--secondary-color-one)]',
       border: 'border-[var(--secondary-color-one-70)]/20',
       imgWife: '/pictures/avatar2.svg',
@@ -85,8 +85,8 @@ const Hero: React.FC = () => {
     {
       id: 'teen',
       title: 'For Teens',
-      subtitleDesktop: 'Ages 13 - 17',
-      subtitleMobile: 'For ages 13 - 17',
+      // subtitleDesktop: 'Ages 13 - 17',
+      // subtitleMobile: 'For ages 13 - 17',
       bg: 'bg-[var(--secondary-color-two)]',
       border: 'border-[var(--secondary-color-two-40)]/20',
       img: '/pictures/avatar4.svg',
@@ -120,7 +120,7 @@ const Hero: React.FC = () => {
             className="text-[var(--primary-black)] text-lg md:text-2xl font-medium mb-8 md:mb-12 max-w-xl mx-auto leading-normal font-serif"
             variants={itemVariants}
           >
-            The best psychologists in Dubai <br className="hidden md:block" /> are here for you.
+            A licensed psychologist in Pakistan <br className="hidden md:block" /> here to support you.
           </motion.h2>
           <motion.p
             className="text-[var(--primary-black)] text-base md:text-lg opacity-80 font-sans"
@@ -158,8 +158,8 @@ const Hero: React.FC = () => {
               <div className="flex-grow md:px-2 flex flex-col justify-center w-full relative">
                 <div className="flex flex-col md:flex-row md:items-center md:justify-center md:gap-3">
                   <h3 className="font-serif font-medium md:font-bold text-base md:text-xl text-[var(--primary-black)] whitespace-nowrap">{card.title}</h3>
-                  <span className="hidden md:inline-flex items-center justify-center text-[10px] uppercase font-bold bg-[var(--white)]/60 px-2 py-1 rounded text-[var(--grey)] border border-[var(--primary-black)]/10">{card.subtitleDesktop}</span>
-                  <span className="md:hidden text-xs text-[var(--grey)] mt-1">{card.subtitleMobile}</span>
+                  {/* <span className="hidden md:inline-flex items-center justify-center text-[10px] uppercase font-bold bg-[var(--white)]/60 px-2 py-1 rounded text-[var(--grey)] border border-[var(--primary-black)]/10">{card.subtitleDesktop}</span> */}
+                  {/* <span className="md:hidden text-xs text-[var(--grey)] mt-1">{card.subtitleMobile}</span> */}
                 </div>
                 <ChevronRight className="absolute right-0 md:hidden text-[var(--primary-black)] opacity-60" size={20} />
                 <div className="hidden md:flex items-center justify-center text-[var(--primary-black)] font-medium text-sm gap-2 mt-6">

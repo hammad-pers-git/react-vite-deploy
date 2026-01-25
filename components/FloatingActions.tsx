@@ -45,21 +45,20 @@ const FloatingActions: React.FC = () => {
       <div className="lg:hidden w-full bg-white shadow-lg flex justify-center items-center gap-4 p-4 md:p-6 pointer-events-auto relative rounded-t-xl">
         <div className="flex items-center gap-3 md:gap-4 justify-center w-full">
           <a
-            href="https://wa.me/923412120752"
+            href="https://wa.me/923175632023?text=Hello%2C%20I%20would%20like%20to%20book%20a%20therapy%20session.%20Please%20guide%20me."
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-3 md:px-8 md:py-3 rounded-full font-bold transition-all duration-300 justify-center
-                       text-white text-sm md:text-base
-                       bg-gradient-to-r from-[#32de84] via-[#25D366] to-[#1caf4d]
-                       hover:from-[#3eea9d] hover:to-[#20bd5a]
-                       shadow-md hover:shadow-lg transform hover:-translate-y-1 hover:scale-105"
+             text-white text-sm md:text-base
+             bg-gradient-to-r from-[#32de84] via-[#25D366] to-[#1caf4d]
+             hover:from-[#3eea9d] hover:to-[#20bd5a]
+             shadow-md hover:shadow-lg transform hover:-translate-y-1 hover:scale-105"
           >
             <MessageCircle size={20} className="fill-current" />
             WhatsApp
           </a>
-
           <a
-            href="tel:+03412120752"
+            href="tel:+03175632023"
             className="flex items-center gap-2 px-5 py-3 md:px-8 md:py-3 rounded-full font-bold transition-all duration-300 justify-center
                        text-white text-sm md:text-base
                        bg-gradient-to-r from-[#b33b92] via-[#9C1D78] to-[#7f1460]

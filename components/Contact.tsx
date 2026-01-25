@@ -202,22 +202,22 @@ const Contact: React.FC = () => {
             <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors">
               <Clock size={24} /> </div>
             <h4 className="font-bold text-[var(--primary-black)] mb-1">Business Hours</h4>
-            <p className="text-[var(--grey)] text-sm">Mon - Sat: 11am - 6pm</p> </div>
+            <p className="text-[var(--grey)] text-sm">Mon - Sat: 9am - 7pm</p> </div>
           {/* Location */}
           <a href="https://www.google.com/maps?q=Your+Business+Location" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-center group cursor-pointer" >
             <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <MapPin size={24} /> </div>
             <h4 className="font-bold text-[var(--primary-black)] mb-1">Location</h4>
             <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)] underline decoration-dotted">View on Google Maps</p> </a>
           {/* Call Us */}
-          <a href="tel:+923412120752" className="flex flex-col items-center text-center group cursor-pointer" >
+          <a href="tel:+923175632023" className="flex flex-col items-center text-center group cursor-pointer" >
             <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <Phone size={24} /> </div>
             <h4 className="font-bold text-[var(--primary-black)] mb-1">Call Us</h4>
-            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">+92 341 2120752</p> </a>
+            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">+92 317 5632023</p> </a>
           {/* Email */}
-          <a href="mailto:contact@manishavarma.com" className="flex flex-col items-center text-center group cursor-pointer" >
+          <a href="mailto:ferasat.ayesha77@gmail.com" className="flex flex-col items-center text-center group cursor-pointer" >
             <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <Mail size={24} /> </div>
             <h4 className="font-bold text-[var(--primary-black)] mb-1">Email</h4>
-            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">ha9001868@gmail.com</p> </a>
+            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)]">ferasat.ayesha77@gmail.com</p> </a>
         </div>
       </div>
     </motion.section>);
