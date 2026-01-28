@@ -58,7 +58,7 @@ const FloatingActions: React.FC = () => {
             WhatsApp
           </a>
           <a
-            href="tel:+03175632023"
+            href="tel:+923175632023"
             className="flex items-center gap-2 px-5 py-3 md:px-8 md:py-3 rounded-full font-bold transition-all duration-300 justify-center
                        text-white text-sm md:text-base
                        bg-gradient-to-r from-[#b33b92] via-[#9C1D78] to-[#7f1460]

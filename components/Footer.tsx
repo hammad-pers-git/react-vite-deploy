@@ -14,7 +14,7 @@ const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onTermsClick }) => {
 
         {/* Company Info */}
         <div className="flex flex-col space-y-3">
-          <h5 className="text-white font-serif font-bold text-lg uppercase tracking-wide">Ferasat Ayesha</h5>
+          <h5 className="text-white font-bold text-lg uppercase tracking-wide">Ferasat Ayesha</h5>
           <p className="text-gray-300 text-sm leading-relaxed">
             I am Ferasat Ayesha, a qualified Psychologist with over 5 years of experience providing psychological support to adults, couples, and teenagers. I hold an MS in Clinical Psychology along with a PMDCP Diploma, and I work with individuals facing emotional, behavioral, and relationship-related challenges.
           </p>

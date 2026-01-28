@@ -128,6 +128,13 @@ const FAQ: React.FC = () => {
           >
             Have a question?
           </motion.h2>
+          <motion.div 
+            className="w-16 h-1 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color-two)] rounded-full mx-auto mt-4 mb-8"
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          />
         </motion.div>
 
         <motion.div

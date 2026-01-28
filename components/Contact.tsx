@@ -203,11 +203,6 @@ const Contact: React.FC = () => {
               <Clock size={24} /> </div>
             <h4 className="font-bold text-[var(--primary-black)] mb-1">Business Hours</h4>
             <p className="text-[var(--grey)] text-sm">Mon - Sat: 9am - 7pm</p> </div>
-          {/* Location */}
-          <a href="https://www.google.com/maps?q=Your+Business+Location" target="_blank" rel="noopener noreferrer" className="flex flex-col items-center text-center group cursor-pointer" >
-            <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <MapPin size={24} /> </div>
-            <h4 className="font-bold text-[var(--primary-black)] mb-1">Location</h4>
-            <p className="text-[var(--grey)] text-sm hover:text-[var(--primary-black)] underline decoration-dotted">View on Google Maps</p> </a>
           {/* Call Us */}
           <a href="tel:+923175632023" className="flex flex-col items-center text-center group cursor-pointer" >
             <div className="w-14 h-14 rounded-full bg-[var(--primary-color-tint-95)] flex items-center justify-center text-[var(--primary-black)] mb-4 group-hover:bg-[var(--primary-color)] transition-colors"> <Phone size={24} /> </div>

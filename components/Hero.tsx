@@ -82,16 +82,16 @@ const Hero: React.FC = () => {
       imgHusband: '/pictures/avatar3.svg',
       imgAlt: 'Couples Therapy',
     },
-    {
-      id: 'teen',
-      title: 'For Teens',
-      // subtitleDesktop: 'Ages 13 - 17',
-      // subtitleMobile: 'For ages 13 - 17',
-      bg: 'bg-[var(--secondary-color-two)]',
-      border: 'border-[var(--secondary-color-two-40)]/20',
-      img: '/pictures/avatar4.svg',
-      imgAlt: 'Teen Therapy',
-    },
+    // {
+    //   id: 'teen',
+    //   title: 'For Teens',
+    //   // subtitleDesktop: 'Ages 13 - 17',
+    //   // subtitleMobile: 'For ages 13 - 17',
+    //   bg: 'bg-[var(--secondary-color-two)]',
+    //   border: 'border-[var(--secondary-color-two-40)]/20',
+    //   img: '/pictures/avatar4.svg',
+    //   imgAlt: 'Teen Therapy',
+    // },
   ];
 
   return (
@@ -132,7 +132,7 @@ const Hero: React.FC = () => {
 
         {/* Cards Grid */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 max-w-6xl mx-auto"
+          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto md:justify-center"
           variants={containerVariants}
         >
           {cards.map((card, index) => (

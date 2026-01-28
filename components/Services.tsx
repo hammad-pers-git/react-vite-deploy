@@ -123,17 +123,27 @@ const GetStarted: React.FC = () => {
           variants={headerVariants}
         >
           <motion.h2
-            className="text-3xl md:text-4xl lg:text-5xl font-serif text-gray-900 mb-2"
+            className="text-3xl md:text-4xl lg:text-5xl text-gray-900 mb-2"
             variants={headerVariants}
           >
             It’s easy to get started
           </motion.h2>
+          
           <motion.p
             className="hidden md:block text-base md:text-lg text-gray-600 max-w-2xl mx-auto"
             variants={headerVariants}
           >
             Start your wellness journey in 4 simple steps.
           </motion.p>
+          <br />
+          <motion.div 
+            className="w-16 h-1 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color-two)] rounded-full mx-auto mb-4"
+            variants={headerVariants}
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          />
         </motion.div>
 
         {/* Desktop Steps */}

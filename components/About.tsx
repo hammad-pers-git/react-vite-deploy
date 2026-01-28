@@ -52,6 +52,7 @@ const About: React.FC<AboutProps> = ({ onOpenAbout }) => {
       variants={containerVariants}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
           {/* Left: Image with Badge */}
@@ -102,6 +103,10 @@ const About: React.FC<AboutProps> = ({ onOpenAbout }) => {
             >
               Empowering Lives Through Empathy
             </motion.h2>
+            <motion.div 
+              // className="w-16 h-1 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color-two)] rounded-full mx-auto mb-6"
+              variants={itemVariants}
+            />
             <motion.p
               className="text-[var(--grey)] mb-6 leading-relaxed"
               variants={itemVariants}

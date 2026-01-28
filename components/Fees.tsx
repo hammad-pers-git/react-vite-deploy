@@ -5,6 +5,7 @@ import { Autoplay, Pagination } from 'swiper/modules';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { motion } from 'framer-motion';
 
 const PricingCard = ({
   title,
@@ -16,8 +17,8 @@ const PricingCard = ({
 }: any) => (
   <div
     className={`relative flex flex-col p-7 rounded-[2rem] border bg-white h-full transition-all ${isPopular
-        ? 'border-[#FCD34D] shadow-xl'
-        : 'border-gray-200 shadow-md'
+      ? 'border-[#FCD34D] shadow-xl'
+      : 'border-gray-200 shadow-md'
       }`}
   >
     <div className="flex justify-between items-start mb-6">
@@ -52,8 +53,8 @@ const PricingCard = ({
         el?.scrollIntoView({ behavior: 'smooth' });
       }}
       className={`mt-6 w-full py-3 rounded-xl font-bold flex items-center justify-center gap-2 transition-all ${isPopular
-          ? 'bg-[#FCD34D] text-gray-900 hover:bg-black hover:text-white'
-          : 'bg-gray-900 text-white hover:bg-black'
+        ? 'bg-[#FCD34D] text-gray-900 hover:bg-black hover:text-white'
+        : 'bg-gray-900 text-white hover:bg-black'
         }`}
     >
       Get Started
@@ -64,6 +65,12 @@ const PricingCard = ({
 );
 
 const Fees = () => {
+  // Animation variants
+  const itemVariants = {
+    hidden: { opacity: 0, scaleX: 0 },
+    visible: { opacity: 1, scaleX: 1 },
+  };
+
   return (
     <section id="fees" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4">
@@ -74,15 +81,24 @@ const Fees = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
             Session Fees
           </h2>
+          <motion.div
+            className="w-16 h-1 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color-two)] rounded-full mx-auto"
+            variants={itemVariants}
+            initial={{ opacity: 0, scaleX: 0 }}
+            whileInView={{ opacity: 1, scaleX: 1 }}
+            viewport={{ once: false, amount: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+          />
         </div>
 
-        <div className="relative">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            autoplay={{ delay: 3500, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
-            spaceBetween={24}
-            centeredSlides={true}
+        <div className="relative flex justify-center">
+          <div className="w-full max-w-4xl">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              autoplay={{ delay: 3500, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
+              spaceBetween={24}
+              centeredSlides={true}
             breakpoints={{
               0: { slidesPerView: 1.1 },
               640: { slidesPerView: 1.3 },
@@ -114,26 +130,15 @@ const Fees = () => {
                 'Conflict resolution tools',
                 'Trust rebuilding exercises',
               ],
-            }, {
-              title: "Teen Support",
-              price: "3,000",
-              duration: "50 mins",
-              icon: <Brain size={26} />,
-              features: [
-                'Ages 13–19 care',
-                'Pressure & identity support',
-                'Parent consultation',
-                'Safe digital space',
-              ],
-            }].map((plan, idx) => (
+            }, ].map((plan, idx) => (
               <SwiperSlide key={idx} className="flex justify-center">
                 {({ isActive }) => (
                   <div
                     className={`transition-all duration-300 ${window.innerWidth < 1024
-                        ? isActive
-                          ? 'scale-100 opacity-100'
-                          : 'scale-95 opacity-50'
-                        : ''
+                      ? isActive
+                        ? 'scale-100 opacity-100'
+                        : 'scale-95 opacity-50'
+                      : ''
                       }`}
                   >
                     <PricingCard {...plan} />
@@ -145,6 +150,7 @@ const Fees = () => {
 
           {/* Pagination outside the cards */}
           <div className="swiper-pagination !mt-6 flex justify-center"></div>
+            </div>
         </div>
       </div>
     </section>

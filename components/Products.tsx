@@ -59,6 +59,7 @@ const Products: React.FC = () => {
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--primary-black)]">
               Wellness Products
             </h2>
+            <div className="w-16 h-1 bg-gradient-to-r from-[var(--primary-color)] to-[var(--secondary-color-two)] rounded-full mx-auto mt-4 mb-8"></div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
