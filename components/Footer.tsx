@@ -15,50 +15,12 @@ const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onTermsClick }) => {
 
         .footer-section {
           padding: 3rem 1rem;
-          background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+          background: #2d2d2d;
           position: relative;
           overflow: hidden;
         }
 
-        .footer-bg-decoration {
-          position: fixed;
-          width: 100%;
-          height: 100%;
-          bottom: 0;
-          left: 0;
-          pointer-events: none;
-          z-index: 0;
-          opacity: 0.7;
-        }
-
-        .footer-bg-decoration::before,
-        .footer-bg-decoration::after {
-          content: '';
-          position: absolute;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(255, 214, 112, 0.5), transparent);
-        }
-
-        .footer-bg-decoration::before {
-          width: 600px;
-          height: 600px;
-          bottom: -200px;
-          right: -200px;
-          animation: footer-float 25s ease-in-out infinite;
-        }
-
-        .footer-bg-decoration::after {
-          width: 400px;
-          height: 400px;
-          top: -100px;
-          left: -100px;
-          animation: footer-float 20s ease-in-out infinite reverse;
-        }
-
-        @keyframes footer-float {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          50% { transform: translate(30px, -30px) scale(1.1); }
-        }
+        /* bubble background removed */
 
         .footer-container {
           max-width: 1200px;
@@ -123,7 +85,6 @@ const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onTermsClick }) => {
       `}</style>
 
       <footer id="main-footer" className="footer-section">
-        <div className="footer-bg-decoration"></div>
         <div className="footer-container">
           <div className="footer-content-grid">
             {/* Company Info */}
