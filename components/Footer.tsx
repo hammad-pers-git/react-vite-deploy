@@ -15,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ onPrivacyClick, onTermsClick }) => {
 
         .footer-section {
           padding: 3rem 1rem;
-          background: #2d2d2d;
+          background: #202020;
           position: relative;
           overflow: hidden;
         }
