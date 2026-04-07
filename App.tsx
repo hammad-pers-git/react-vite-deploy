@@ -12,6 +12,7 @@ import FloatingActions from './components/FloatingActions';
 import AboutModal from './components/AboutModal';
 import PrivacyPolicy from './components/PrivacyPolicy';
 import TermsOfUse from './components/TermsOfUse';
+import ScrollProgressLoader from './components/ScrollProgressLoader';
 
 type View = 'main' | 'privacy' | 'terms';
 
@@ -26,6 +27,7 @@ const App: React.FC = () => {
 
   return (
     <div className="w-full min-h-screen flex flex-col bg-[var(--bg-cream)]">
+      <ScrollProgressLoader />
       <Navbar onHomeClick={() => navigateTo('main')} />
       
       <main className="flex-grow">
